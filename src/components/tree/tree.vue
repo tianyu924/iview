@@ -194,6 +194,14 @@
             getCheckedNodes () {
                 return this.getNodes(this.data, {checked: true, childrenCheckedStatus: 2});
             },
+           getHalfCheckedNodes () {
+                /* public API */
+                return this.flatState.filter(obj => obj.node.indeterminate).map(obj => obj.node);
+            },
+            getCheckedAndHalfCheckedNodes () {
+               /* public API */
+                return this.flatState.filter(obj => obj.node.checked || obj.node.indeterminate).map(obj => obj.node);
+            },
             getChildrenCheckedStatus (children) {
                 let checkNum = 0, child_childrenAllChecked = true;
                 for (let child of children) {
